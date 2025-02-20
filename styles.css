@@ -1,40 +1,52 @@
-/* 🌟 General Styles (Modern Look) */
+/* 🌟 Default Light Mode (Uses CSS Variables) */
+:root {
+    --bg-color: #f9f9f9;
+    --text-color: #333;
+    --section-bg: white;
+    --button-bg: #ff7e5f;
+    --button-hover: #e05e47;
+}
+
+/* 🌙 Dark Mode Theme */
+.dark-mode {
+    --bg-color: #1e1e1e;
+    --text-color: white;
+    --section-bg: #2c2c2c;
+    --button-bg: #555;
+    --button-hover: #777;
+}
+
+/* Apply Theme Colors */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     text-align: center;
-    background: linear-gradient(to right, #ffecd2, #fcb69f);
-    /* Modern gradient */
-    color: #333;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-/* 🌟 Header Section (Polished Look) */
+/* Centered header */
 header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px;
+    padding: 20px;
 }
 
-/* 🌟 Styling Sections (Modern Card Design) */
+/* Section styling */
 section {
     max-width: 90%;
     width: 800px;
     margin: auto;
     padding: 20px;
-    background: white;
+    background: var(--section-bg);
     border-radius: 12px;
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out;
 }
 
-/* Hover effect for sections */
-section:hover {
-    transform: scale(1.02);
-}
-
-/* 🌟 Profile Image (Now Looks More Polished) */
+/* Profile Image */
 img {
     display: block;
     width: 15vw;
@@ -48,28 +60,14 @@ img {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-/* Hover effect on image */
-img:hover {
-    transform: scale(1.1) rotate(3deg);
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+/* 🌟 Dark Mode Adjustments */
+.dark-mode section {
+    box-shadow: 0px 6px 12px rgba(255, 255, 255, 0.1);
 }
 
-/* 🌟 Make details and summary more interactive */
-details {
-    background: #f4f4f4;
-    padding: 10px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.3s ease-in-out;
-}
-
-details:hover {
-    background: #e0e0e0;
-}
-
-/* 🌟 Button Styles (For Dark Mode or Interactivity) */
+/* 🌟 Dark Mode Button */
 button {
-    background: #ff7e5f;
+    background: var(--button-bg);
     color: white;
     border: none;
     padding: 10px 15px;
@@ -80,7 +78,7 @@ button {
 }
 
 button:hover {
-    background: #e05e47;
+    background: var(--button-hover);
 }
 
 /* ✅ Mobile-Friendly Adjustments */
@@ -104,12 +102,5 @@ button:hover {
 
     h1 {
         font-size: 1.5rem;
-    }
-}
-
-/* ✅ Large Screen Adjustments */
-@media (min-width: 1200px) {
-    section {
-        max-width: 1000px;
     }
 }
