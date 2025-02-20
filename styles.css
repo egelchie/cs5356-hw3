@@ -18,6 +18,30 @@ section {
     padding: 20px;
 }
 
+/* 🌟 Apply circular image globally 🌟 */
+img {
+    display: block;
+    width: 150px;
+    /* Standard size for profile image */
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    /* Makes the image circular */
+    border: 3px solid #000;
+    /* Optional: adds a nice border */
+    margin: 0 auto;
+    /* Centers the image */
+}
+
+/* Responsive Design - Adjustments for small screens */
+@media (max-width: 600px) {
+    img {
+        width: 120px;
+        /* Slightly smaller on mobile */
+        height: 120px;
+    }
+}
+
 @media (min-width: 600px) {
     body {
         display: flex;
@@ -30,11 +54,4 @@ section {
         flex-direction: column;
         align-items: center;
     }
-img {
-    mix-blend-mode: multiply;
-    border-radius: 50%;
-    /* Makes image circular */
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-}}
+}
