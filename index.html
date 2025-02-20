@@ -7,7 +7,7 @@
     <title>My Homepage</title>
     <link rel="stylesheet" href="styles.css">
 
-    <!--  Open Graph Meta Tags (for iMessage, Slack, Discord, Facebook, LinkedIn) -->
+    <!-- ✅ Open Graph Meta Tags (for iMessage, Slack, Discord, Facebook, LinkedIn) -->
     <meta property="og:title" content="Emily's Personal Homepage">
     <meta property="og:description"
         content="Welcome to my homepage! Learn about my projects in AI, sustainability, and tech.">
@@ -17,13 +17,13 @@
     <meta property="og:url" content="https://egelchie.github.io/cs5356-hw3/">
     <meta property="og:type" content="website">
 
-    <!--  Twitter Card Meta Tags -->
+    <!-- ✅ Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Emily's Personal Homepage">
     <meta name="twitter:description" content="Check out my homepage to see my latest projects and interests!">
     <meta name="twitter:image" content="https://egelchie.github.io/cs5356-hw3/images/profile.jpg">
 
-    <!--  Google Analytics (Corrected Placement Inside <head>) -->
+    <!-- ✅ Google Analytics (Ensure it runs but doesn’t interfere with other scripts) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G6FVNGFS1Y"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -43,19 +43,20 @@
         <h2>About Me</h2>
         <p>Hi! I'm Emily. I'm passionate about AI, sustainability, and tech. Welcome to my personal homepage!</p>
 
-        <!--  New HTML element: <details> for interactivity -->
+        <!-- ✅ Interactive <details> Element -->
         <details>
             <summary>Click to reveal a fun fact about me!</summary>
             <p>I love running, traveling, and practicing film photography.</p>
         </details>
     </section>
 
-    <!--  Fetch data from an API (Cat Facts) -->
+    <!-- ✅ Fetch Random Cat Fact -->
     <section id="cat-fact">
         <h2>Random Cat Fact</h2>
         <p id="fact">Loading...</p>
     </section>
 
+    <!-- ✅ JavaScript Must Be Loaded at the End -->
     <script src="script.js"></script>
 </body>
 
