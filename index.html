@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="Check out my homepage to see my latest projects and interests!">
     <meta name="twitter:image" content="https://egelchie.github.io/cs5356-hw3/images/profile.jpg">
 
-    <!-- ✅ Google Analytics (Ensure it runs but doesn’t interfere with other scripts) -->
+    <!-- ✅ Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G6FVNGFS1Y"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -37,7 +37,15 @@
     <header>
         <h1>Welcome to My Homepage</h1>
         <img id="profile-pic" src="images/profile.jpg" alt="Profile Picture">
-        <button id="theme-toggle">Toggle Dark Mode</button>  <!-- ✅ Dark Mode Toggle Button -->
+
+        <!-- ✅ Dark Mode Toggle Switch -->
+        <label class="switch">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider">
+                <span class="icon sun">🌞</span>
+                <span class="icon moon">🌙</span>
+            </span>
+        </label>
     </header>
 
     <section id="about">

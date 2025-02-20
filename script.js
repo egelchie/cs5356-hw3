@@ -11,11 +11,21 @@ document.addEventListener("DOMContentLoaded", function () {
     toggleSwitch.addEventListener("change", function () {
         document.body.classList.toggle("dark-mode");
 
-        // ✅ Save User Preference in Local Storage
+        // ✅ Save User Preference
         if (document.body.classList.contains("dark-mode")) {
             localStorage.setItem("theme", "dark");
         } else {
             localStorage.setItem("theme", "light");
         }
     });
+
+    // ✅ Fetch Random Cat Fact
+    fetch('https://catfact.ninja/fact')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('fact').innerText = data.fact;
+        })
+        .catch(error => {
+            document.getElementById('fact').innerText = "Failed to load fact.";
+        });
 });
