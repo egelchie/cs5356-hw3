@@ -1,136 +1,22 @@
-/* 🌟 Light Mode (Default) */
-:root {
-    --bg-color: #f9f9f9;
-    --text-color: #333;
-    --section-bg: white;
-    --button-bg: #ff7e5f;
-    --button-hover: #e05e47;
-}
-
-/* 🌙 Dark Mode */
-.dark-mode {
-    --bg-color: #1e1e1e;
-    --text-color: white;
-    --section-bg: #2c2c2c;
-    --button-bg: #555;
-    --button-hover: #777;
-}
-
-/* 🌟 Apply Theme Colors */
-body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    background: var(--bg-color);
-    color: var(--text-color);
-    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
-}
-
-/* ✅ Section Styling */
-section {
-    max-width: 90%;
-    width: 800px;
-    margin: auto;
-    padding: 20px;
-    background: var(--section-bg);
-    border-radius: 12px;
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* ✅ Fix Safari Image Proportions */
+/* 🌟 Profile Image - Fix Safari Distortion */
 img {
     display: block;
     width: 150px;
     height: 150px;
     object-fit: cover;
+    /* ✅ Ensures image fills without distortion */
     aspect-ratio: 1 / 1;
+    /* ✅ Fixes Safari stretch issue */
     border-radius: 50%;
     border: 3px solid white;
     margin: 0 auto;
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* ✅ Safari Fix */
+/* ✅ Safari Fix: Ensure Proper Image Scaling */
 @supports (-webkit-touch-callout: none) {
     img {
         width: 140px;
         height: 140px;
     }
-}
-
-/* ✅ Dark Mode Toggle Switch */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 30px;
-    margin-top: 10px;
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-    appearance: none;
-}
-
-/* ✅ Slider Track */
-.slider {
-    position: absolute;
-    cursor: pointer;
-    width: 100%;
-    height: 100%;
-    background-color: #ccc;
-    border-radius: 34px;
-    transition: 0.4s;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 3px;
-}
-
-/* ✅ Move Slider Button */
-.slider::before {
-    content: "";
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    background-color: white;
-    border-radius: 50%;
-    transition: 0.4s;
-    left: 4px;
-}
-
-input:checked+.slider {
-    background-color: #555;
-}
-
-input:checked+.slider::before {
-    transform: translateX(30px);
-}
-
-/* 🌞 Sun & 🌙 Moon Icons */
-.icon {
-    position: absolute;
-    font-size: 14px;
-    transition: 0.4s;
-}
-
-.sun {
-    left: 8px;
-    color: #f39c12;
-}
-
-.moon {
-    right: 8px;
-    color: #ecf0f1;
-}
-
-input:checked+.slider .sun {
-    opacity: 0;
-}
-
-input:not(:checked)+.slider .moon {
-    opacity: 0;
 }

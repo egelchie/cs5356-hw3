@@ -1,25 +1,25 @@
 document.addEventListener("DOMContentLoaded", function () {
     const toggleSwitch = document.getElementById("theme-toggle");
+    const body = document.body;
 
-    // ✅ Check local storage for user preference
+    // ✅ Load stored theme preference
     if (localStorage.getItem("theme") === "dark") {
-        document.body.classList.add("dark-mode");
+        body.classList.add("dark-mode");
         toggleSwitch.checked = true;
     }
 
     // ✅ Toggle Dark Mode on Click
     toggleSwitch.addEventListener("change", function () {
-        document.body.classList.toggle("dark-mode");
+        body.classList.toggle("dark-mode");
 
-        // ✅ Save User Preference
-        if (document.body.classList.contains("dark-mode")) {
+        if (body.classList.contains("dark-mode")) {
             localStorage.setItem("theme", "dark");
         } else {
             localStorage.setItem("theme", "light");
         }
     });
 
-    // ✅ Fetch Random Cat Fact
+    // ✅ Fetch Random Cat Fact (API Call)
     fetch('https://catfact.ninja/fact')
         .then(response => response.json())
         .then(data => {
