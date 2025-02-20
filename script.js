@@ -1,13 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const toggleButton = document.getElementById("theme-toggle");
+    const toggleSwitch = document.getElementById("theme-toggle");
 
-    // ✅ Check local storage for user's last theme preference
+    // ✅ Check local storage for user preference
     if (localStorage.getItem("theme") === "dark") {
         document.body.classList.add("dark-mode");
+        toggleSwitch.checked = true;
     }
 
-    // ✅ Toggle Theme on Button Click
-    toggleButton.addEventListener("click", function () {
+    // ✅ Toggle Dark Mode on Click
+    toggleSwitch.addEventListener("change", function () {
         document.body.classList.toggle("dark-mode");
 
         // ✅ Save User Preference in Local Storage

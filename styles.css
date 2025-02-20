@@ -1,4 +1,4 @@
-/* 🌟 Default Light Mode (Uses CSS Variables) */
+/* 🌟 Light & Dark Mode Theme Colors */
 :root {
     --bg-color: #f9f9f9;
     --text-color: #333;
@@ -27,58 +27,85 @@ body {
     transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-/* Centered header */
-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+/* 🌟 New Toggle Switch Design */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    margin-top: 10px;
 }
 
-/* Section styling */
-section {
-    max-width: 90%;
-    width: 800px;
-    margin: auto;
-    padding: 20px;
-    background: var(--section-bg);
-    border-radius: 12px;
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+/* Hide default checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
-/* Profile Image */
-img {
-    display: block;
-    width: 15vw;
-    max-width: 150px;
-    height: auto;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid white;
-    margin: 0 auto;
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-/* 🌟 Dark Mode Adjustments */
-.dark-mode section {
-    box-shadow: 0px 6px 12px rgba(255, 255, 255, 0.1);
-}
-
-/* 🌟 Dark Mode Button */
-button {
-    background: var(--button-bg);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 6px;
+/* 🌟 Slider Track */
+.slider {
+    position: absolute;
     cursor: pointer;
-    font-size: 16px;
-    transition: background 0.3s ease-in-out;
+    width: 100%;
+    height: 100%;
+    background-color: #ccc;
+    border-radius: 34px;
+    transition: 0.4s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px;
+    box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.3);
 }
 
-button:hover {
-    background: var(--button-hover);
+/* 🌟 Circular Slider Button */
+.slider::before {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+    left: 4px;
+}
+
+/* 🌙 Dark Mode Active - Move Switch */
+input:checked+.slider {
+    background-color: #555;
+}
+
+input:checked+.slider::before {
+    transform: translateX(30px);
+}
+
+/* 🌟 Icons Inside the Slider */
+.icon {
+    position: absolute;
+    font-size: 14px;
+    transition: 0.4s;
+}
+
+/* 🌞 Sun Icon (Left Side) */
+.sun {
+    left: 8px;
+    color: #f39c12;
+}
+
+/* 🌙 Moon Icon (Right Side) */
+.moon {
+    right: 8px;
+    color: #ecf0f1;
+}
+
+/* Hide the inactive icon */
+input:checked+.slider .sun {
+    opacity: 0;
+}
+
+input:not(:checked)+.slider .moon {
+    opacity: 0;
 }
 
 /* ✅ Mobile-Friendly Adjustments */
