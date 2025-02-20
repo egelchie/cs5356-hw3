@@ -2,8 +2,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const toggleSwitch = document.getElementById("theme-toggle");
     const body = document.body;
 
-    // ✅ Load stored theme preference
-    if (localStorage.getItem("theme") === "dark") {
+    // ✅ Fix Safari: Check localStorage OR system preference
+    if (localStorage.getItem("theme") === "dark" ||
+        (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
         body.classList.add("dark-mode");
         toggleSwitch.checked = true;
     }
