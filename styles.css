@@ -22,15 +22,15 @@ section {
 img {
     display: block;
     width: 150px;
-    /* Standard size for profile image */
     height: 150px;
     object-fit: cover;
     border-radius: 50%;
-    /* Makes the image circular */
     border: 3px solid #000;
-    /* Optional: adds a nice border */
     margin: 0 auto;
-    /* Centers the image */
+    transition: transform 0.3s ease-in-out;
+    /* ✅ Fix Safari: Force hardware acceleration */
+    will-change: transform;
+    transform-style: preserve-3d;
 }
 
 /* Responsive Design - Adjustments for small screens */

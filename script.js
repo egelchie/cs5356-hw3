@@ -1,19 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Fetch random cat fact
-    fetch('https://catfact.ninja/fact')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            document.getElementById('fact').innerText = data.fact;
-        })
-        .catch(error => {
-            console.error('Error fetching cat fact:', error);
-            document.getElementById('fact').innerText = "Failed to load fact. Try again later.";
+    let profileImage = document.getElementById("profile-pic");
+
+    if (profileImage) {
+        profileImage.addEventListener("mouseover", function () {
+            profileImage.style.transform = "scale(1.1) rotate(5deg) perspective(1px)";
+            profileImage.style.transition = "transform 0.3s ease-in-out";
         });
+
+        profileImage.addEventListener("mouseout", function () {
+            profileImage.style.transform = "scale(1) rotate(0deg) perspective(1px)";
+        });
+    } else {
+        console.error("Profile picture not found.");
+    }
 
     // Mouse event interactivity for profile image
     let profileImage = document.querySelector("img");
