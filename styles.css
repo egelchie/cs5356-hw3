@@ -730,3 +730,66 @@ details p {
         padding: 1.5rem;
     }
 }
+
+/* Cat Facts Section */
+#cat-facts {
+    background: linear-gradient(165deg, var(--section-bg), rgba(255, 192, 203, 0.1));
+    text-align: center;
+    padding: var(--content-spacing);
+}
+
+.fact-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.fact-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+#fact {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+#new-fact-btn {
+    background-color: var(--deep-pink);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#new-fact-btn:hover {
+    background-color: var(--primary-pink);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Dark mode adjustments */
+.dark-mode .fact-card {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+    #fact {
+        font-size: 1.1rem;
+    }
+    
+    .fact-card {
+        padding: 1.5rem;
+    }
+}

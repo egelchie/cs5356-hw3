@@ -73,4 +73,24 @@ document.addEventListener("DOMContentLoaded", function () {
     if (newQuoteBtn) {
         newQuoteBtn.addEventListener("click", fetchQuote);
     }
+
+    // Cat Facts API
+    async function fetchCatFact() {
+        try {
+            const response = await fetch("https://catfact.ninja/fact");
+            const data = await response.json();
+            document.getElementById("fact").innerText = data.fact;
+        } catch (error) {
+            document.getElementById("fact").innerText = "Failed to load cat fact.";
+        }
+    }
+
+    // Fetch cat fact on page load
+    fetchCatFact();
+    
+    // Get new fact when button is clicked
+    const newFactBtn = document.getElementById("new-fact-btn");
+    if (newFactBtn) {
+        newFactBtn.addEventListener("click", fetchCatFact);
+    }
 });
