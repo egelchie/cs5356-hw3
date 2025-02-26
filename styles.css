@@ -665,7 +665,7 @@ details p {
 }
 
 .quote-card::before {
-    content: """;
+    content: "\201C";  /* Unicode for opening double quote */
     font-size: 5rem;
     font-family: Georgia, serif;
     position: absolute;
