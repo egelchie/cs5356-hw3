@@ -212,30 +212,26 @@
         <a href="https://medium.com/@emily.gelchie" target="_blank">Visit My Blog</a>
     </section>
 
-        <section id="cat-fact">
-            <h2>Random Cat Fact</h2>
-            <p id="fact">Loading cat fact...</p>
-        </section>
+    <!-- Add this section before the footer -->
+    <section id="activity-suggestion">
+        <h2>Random Activity Suggestion</h2>
+        <div class="activity-container">
+            <div id="activity-card">
+                <p id="activity-text">Loading a fun activity suggestion...</p>
+                <div class="activity-details">
+                    <span id="activity-type" class="activity-tag">Type: -</span>
+                    <span id="activity-participants" class="activity-tag">Participants: -</span>
+                    <span id="activity-price" class="activity-tag">Price: -</span>
+                </div>
+            </div>
+            <button id="new-activity-btn">Get Another Activity</button>
+        </div>
+    </section>
     </main>
 
     <footer>
         <p>© 2024 Emily Gelchie</p>
     </footer>
-
-    <script>
-        async function fetchCarbonFact() {
-            try {
-                const response = await fetch('https://api.api-ninjas.com/v1/environmental_facts', {
-                    headers: { 'X-Api-Key': 'YOUR_API_KEY' }
-                });
-                const data = await response.json();
-                document.getElementById('fact').innerText = data.fact;
-            } catch (error) {
-                document.getElementById('fact').innerText = "Failed to load environmental insight.";
-            }
-        }
-        fetchCarbonFact();
-    </script>
 </body>
 
 </html>
