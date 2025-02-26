@@ -20,15 +20,25 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // ✅ API Integration
+    // Environmental Facts API Integration
     async function fetchEnvironmentalFact() {
         const factElement = document.getElementById('fact');
         factElement.innerText = "Loading...";
         try {
-            const response = await fetch('https://api.api-ninjas.com/v1/environmental_facts');
+            const response = await fetch('https://api.api-ninjas.com/v1/facts?category=environment', {
+                headers: {
+                    'X-Api-Key': 'XDnNM9iCgVEFlg93XiG4Qg==OgCW0zFLcCbUD0fJ' 
+                }
+            });
+            
             if (!response.ok) throw new Error('API request failed');
+            
             const data = await response.json();
-            factElement.innerText = data.fact;
+            if (data && data.length > 0) {
+                factElement.innerText = data[0].fact;
+            } else {
+                throw new Error('No fact received');
+            }
         } catch (error) {
             factElement.innerText = "Failed to load environmental fact. Please try again later.";
             console.error('Error:', error);
@@ -47,18 +57,3 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initialize
     fetchEnvironmentalFact();
 });
-
-function showToast(message, type = 'info') {
-    const toast = document.createElement('div');
-    toast.className = `toast toast-${type}`;
-    toast.textContent = message;
-    document.body.appendChild(toast);
-    
-    setTimeout(() => {
-        toast.classList.add('show');
-        setTimeout(() => {
-            toast.classList.remove('show');
-            setTimeout(() => toast.remove(), 300);
-        }, 3000);
-    }, 100);
-}
