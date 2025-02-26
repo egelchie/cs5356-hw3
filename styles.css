@@ -1,49 +1,183 @@
+/* Base container width control */
+.content-container {
+    width: 100%;
+    max-width: 1512px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Ensure all content fits viewport */
+* {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
 /* Light Mode (Default) */
 :root {
     --bg-color: #f9f9f9;
     --text-color: #333;
-    --section-bg: white;
-    --button-bg: #ff7e5f;
-    --button-hover: #e05e47;
-    --max-width: min(90vw, 1200px);
-    --padding-inline: clamp(1rem, 3vw, 2rem);
-    --section-spacing: clamp(3rem, 8vw, 6rem);
-    --content-spacing: clamp(1.5rem, 4vw, 3rem);
-    --container-padding: clamp(1rem, 5vw, 3rem);
-    --border-radius: clamp(12px, 2vw, 24px);
+    --section-bg: rgba(255, 255, 255, 0.9);
+    --border-radius: 12px;
+    --content-spacing: 2rem;
+    --primary-pink: #ff9a9e;
+    --sunset-orange: #fad0c4;
+    --deep-pink: #ff6b81;
 }
 
 /* Dark Mode */
 .dark-mode {
     --bg-color: #1e1e1e;
     --text-color: white;
-    --section-bg: #2c2c2c;
-    --button-bg: #555;
-    --button-hover: #777;
+    --section-bg: rgba(30, 30, 30, 0.9);
+}
+
+/* Dark Mode Toggle - Proper Slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    margin-top: 10px;
+}
+
+.slider {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ccc;
+    border-radius: 34px;
+    cursor: pointer;
+    transition: 0.4s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+    left: 4px;
+}
+
+input:checked + .slider {
+    background-color: #555;
+}
+
+input:checked + .slider::before {
+    transform: translateX(30px);
+    background-color: #333;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+/* Section Styling */
+section {
+    background: var(--section-bg);
+    padding: var(--content-spacing);
+    margin: var(--content-spacing) auto;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 1200px;
+}
+
+/* Gallery Grid */
+#gallery {
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: var(--content-spacing);
+}
+
+#gallery img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    transform-style: preserve-3d;
+    will-change: transform;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Typography */
+h1, h2, h3 {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    line-height: 1.2;
+    margin-bottom: var(--content-spacing);
+}
+
+h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: var(--deep-pink);
+    margin-bottom: var(--content-spacing);
+    padding-bottom: 1rem;
+    line-height: 1.2;
+}
+
+p, li {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 65ch;
+    margin: 1rem auto;
+    word-wrap: break-word;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    line-height: 1.6;
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 375px) {
+    #gallery {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .content-container {
+        padding: 0 0.5rem;
+    }
+    
+    section {
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    h2 {
+        font-size: 1.25rem;
+    }
 }
 
 /* Apply Theme Colors */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    padding: 0 1rem;
-    text-align: center;
+    padding: 0;
     background: var(--bg-color);
     color: var(--text-color);
     transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
     min-height: 100vh;
-}
-
-/* Section Styling */
-section {
-    position: relative;
-    margin: 0;
-    padding: var(--content-spacing);
-    border-radius: var(--border-radius);
-    background: var(--section-bg);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;
+    text-align: center;
 }
 
 /* Staggered section layout */
@@ -109,65 +243,6 @@ section:hover {
     border-color: var(--section-bg);
 }
 
-/* Dark Mode Toggle - Proper Slider */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 30px;
-    margin-top: 10px;
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-    position: absolute;
-}
-
-.slider {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: #ccc;
-    border-radius: 34px;
-    cursor: pointer;
-    transition: 0.4s;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 4px;
-}
-
-/* The Circle Toggle Button */
-.slider::before {
-    content: "";
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    background-color: white;
-    border-radius: 50%;
-    transition: 0.4s;
-    left: 4px;
-}
-
-input:checked + .slider {
-    background-color: #555;
-}
-
-input:checked + .slider::before {
-    transform: translateX(30px);
-    background-color: #333;
-}
-
-/* Hide input */
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-    position: absolute;
-}
-
 /* Responsive typography */
 h1 {
     font-size: clamp(1.5rem, 4vw, 2.5rem);
@@ -187,39 +262,14 @@ p, li {
     line-height: 1.6;
 }
 
-/* Make gallery responsive */
-#gallery {
-    padding: var(--content-spacing);
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    background: linear-gradient(165deg, var(--section-bg), rgba(255, 154, 158, 0.03));
-}
-
-#gallery img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: var(--border-radius);
-    transition: transform 0.3s ease;
-    transform-style: preserve-3d;
-    will-change: transform;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Remove or modify this hover effect as it's conflicting with the 3D tilt */
-#gallery img:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    /* remove transform: scale(1.05); if it exists */
-}
-
 /* Responsive details elements */
 details {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 8px;
-    margin: 1rem 0;
+    margin: 1rem auto;
     padding: 1rem;
     transition: all 0.3s ease;
+    max-width: 65ch;
 }
 
 details:hover {
@@ -232,6 +282,10 @@ details summary {
     cursor: pointer;
     padding: 0.5rem;
     color: var(--deep-pink);
+}
+
+details p {
+    text-align: center;
 }
 
 /* Enhanced list styling */
@@ -254,7 +308,7 @@ li:hover {
 
 /* Blog section styling */
 #blog {
-    text-align: left;
+    text-align: center;
     background: linear-gradient(175deg, var(--section-bg), rgba(255, 154, 158, 0.05));
     padding: var(--content-spacing);
 }
@@ -290,6 +344,9 @@ li:hover {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    text-align: center;
+    margin: 1rem auto;
+    max-width: 65ch;
 }
 
 /* Media queries for specific adjustments */
@@ -353,26 +410,6 @@ header {
     transform: scale(1.1);
 }
 
-/* Responsive Design Media Queries */
-@media (max-width: 768px) {
-    section:nth-child(odd),
-    section:nth-child(even) {
-        transform: none;
-    }
-    
-    section {
-        padding: var(--container-padding);
-    }
-    
-    #gallery {
-        grid-template-columns: 1fr;
-    }
-    
-    #gallery img {
-        height: 250px;
-    }
-}
-
 /* Different section styles */
 #about {
     background: linear-gradient(135deg, var(--section-bg), rgba(255, 154, 158, 0.05));
@@ -427,20 +464,6 @@ footer {
     background: linear-gradient(to right, #2a2a2a 8%, #3a3a3a 18%, #2a2a2a 33%);
 }
 
-/* Base container width control */
-.content-container {
-    width: 100%;
-    max-width: 1512px;  /* Maximum test width */
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-/* Ensure all content fits viewport */
-* {
-    max-width: 100%;
-    box-sizing: border-box;
-}
-
 /* Responsive images */
 img {
     max-width: 100%;
@@ -448,67 +471,76 @@ img {
     display: block;
 }
 
-/* Text readability */
-p, li {
-    max-width: 65ch;  /* Optimal reading width */
-    word-wrap: break-word;
+/* Course descriptions */
+#cornell-courses p {
+    text-align: center;
+    margin: 1.5rem auto;
+    padding: 0 1rem;
 }
 
-/* Gallery grid layout */
-#gallery {
-    padding: var(--content-spacing);
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    background: linear-gradient(165deg, var(--section-bg), rgba(255, 154, 158, 0.03));
+/* About section */
+#about p {
+    text-align: center;
+    margin: 1rem auto;
 }
 
-#gallery img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: var(--border-radius);
-    transition: transform 0.3s ease;
-    transform-style: preserve-3d;
-    will-change: transform;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Blog section */
+#blog p {
+    text-align: center;
 }
 
-/* Mobile optimization */
-@media screen and (max-width: 375px) {
-    #gallery {
-        grid-template-columns: 1fr;  /* Single column for smallest screens */
-        gap: 1rem;
+/* Global text alignment */
+body {
+    text-align: center;
+}
+
+/* Center all section content */
+section {
+    text-align: center !important;
+}
+
+/* Target all text elements */
+section h1, 
+section h2, 
+section h3, 
+section p, 
+section li,
+section strong,
+section b,
+section details,
+section summary {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 800px;
+}
+
+/* Specific fixes for course listings */
+#cornell-courses p,
+#cornell-courses li,
+#cornell-courses ul {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Center list items specifically */
+li {
+    text-align: center !important;
+    list-style-position: inside;
+}
+
+/* Center details content */
+details p {
+    text-align: center !important;
+}
+
+/* Ensure content is centered on mobile too */
+@media (max-width: 768px) {
+    section p, 
+    section li,
+    section ul {
+        text-align: center !important;
+        padding-left: 0;
     }
-    
-    .content-container {
-        padding: 0 0.5rem;
-    }
-    
-    h1 {
-        font-size: 1.5rem;
-    }
-    
-    h2 {
-        font-size: 1.25rem;
-    }
-}
-
-/* Responsive typography */
-h1 {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-    line-height: 1.2;
-}
-
-h2 {
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-    color: var(--deep-pink);
-    margin-bottom: var(--content-spacing);
-    padding-bottom: 1rem;
-    line-height: 1.2;
-}
-
-p, li {
-    font-size: clamp(0.9rem, 2vw, 1rem);
-    line-height: 1.6;
 }
