@@ -20,28 +20,23 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Environmental Facts API Integration
-    async function fetchEnvironmentalFact() {
+    // Cat Facts API Integration
+    async function fetchCatFact() {
         const factElement = document.getElementById('fact');
         factElement.innerText = "Loading...";
         try {
-            const response = await fetch('https://api.api-ninjas.com/v1/facts?category=environment', {
-                headers: {
-                    'X-Api-Key': 'XDnNM9iCgVEFlg93XiG4Qg==OgCW0zFLcCbUD0fJ' 
-                }
-            });
-            
+            const response = await fetch('https://catfact.ninja/fact');
             if (!response.ok) throw new Error('API request failed');
             
             const data = await response.json();
-            if (data && data.length > 0) {
-                factElement.innerText = data[0].fact;
+            if (data && data.fact) {
+                factElement.innerText = data.fact;
             } else {
                 throw new Error('No fact received');
             }
         } catch (error) {
-            factElement.innerText = "Failed to load environmental fact. Please try again later.";
             console.error('Error:', error);
+            factElement.innerText = "Failed to load cat fact. Please try again later.";
         }
     }
     
@@ -55,5 +50,5 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Initialize
-    fetchEnvironmentalFact();
+    fetchCatFact();
 });
