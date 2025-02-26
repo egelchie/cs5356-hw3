@@ -20,13 +20,26 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // ✅ Fetch Random Cat Fact (API Call)
-    fetch('https://catfact.ninja/fact')
-        .then(response => response.json())
-        .then(data => {
+    // ✅ API Integration
+    async function fetchEnvironmentalFact() {
+        try {
+            const response = await fetch('https://api.api-ninjas.com/v1/environmental_facts');
+            const data = await response.json();
             document.getElementById('fact').innerText = data.fact;
-        })
-        .catch(error => {
-            document.getElementById('fact').innerText = "Failed to load fact.";
-        });
+        } catch (error) {
+            document.getElementById('fact').innerText = "Failed to load environmental fact.";
+        }
+    }
+    
+    // ✅ Extra Credit: Mouse Event Interactivity
+    document.querySelector('.interactive-element').addEventListener('mousemove', (e) => {
+        const { x, y } = e.currentTarget.getBoundingClientRect();
+        const rotateX = (e.clientY - y - 150) / 10;
+        const rotateY = (e.clientX - x - 150) / 10;
+        
+        e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    // Initialize
+    fetchEnvironmentalFact();
 });

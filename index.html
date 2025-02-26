@@ -3,70 +3,199 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Homepage</title>
-    <link rel="stylesheet" href="styles.css">
-
-    <!-- ✅ Open Graph Meta Tags (for iMessage, Slack, Discord, Facebook, LinkedIn) -->
-    <meta property="og:title" content="Emily's Personal Homepage">
-    <meta property="og:description"
-        content="Welcome to my homepage! Learn about my projects in AI, sustainability, and tech.">
-    <meta property="og:image" content="https://egelchie.github.io/cs5356-hw3/images/profile.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://egelchie.github.io/cs5356-hw3/">
-    <meta property="og:type" content="website">
-
-    <!-- ✅ Twitter Card Meta Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta property="og:title" content="Emily Gelchie">
+    <meta property="og:description" content="AI/ML and data science specialist passionate about AI sustainability">
+    <meta property="og:image" content="images/profile.jpg">
+    <meta property="og:url" content="https://[your-username].github.io/[repo-name]/">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Emily's Personal Homepage">
-    <meta name="twitter:description" content="Check out my homepage to see my latest projects and interests!">
-    <meta name="twitter:image" content="https://egelchie.github.io/cs5356-hw3/images/profile.jpg">
-
-    <!-- ✅ Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G6FVNGFS1Y"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-G6FVNGFS1Y');
-    </script>
+    <title>Emily Gelchie</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
+/* Custom cursor and theme styles */
+<style>
+  :root {
+    --primary-pink: #ff9a9e;
+    --sunset-orange: #fad0c4; 
+    --deep-pink: #ff6b81;
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%23ff6b81'><path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg>") 12 12, auto;
+  }
 
+  body {
+    background: linear-gradient(45deg, var(--primary-pink), var(--sunset-orange));
+  }
+</style>
 <body>
     <header>
         <h1>Welcome to My Homepage</h1>
-        <img id="profile-pic" src="images/profile.jpg" alt="Profile Picture">
+        <img id="profile-pic" src="images/profile.jpg" alt="Profile Picture" class="rainbow-glow">
 
-        <!-- ✅ Dark Mode Toggle (Slider with Sun & Moon Icons) -->
-        <label class="switch">
-            <input type="checkbox" id="theme-toggle">
-            <span class="slider">
-                <span class="icon sun">🌞</span>
-                <span class="icon moon">🌙</span>
-            </span>
-        </label>
+        <details>
+            <summary>Theme Settings</summary>
+            <label class="switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider">
+                    <span class="icon sun">🌞</span>
+                    <span class="icon moon">🌙</span>
+                </span>
+            </label>
+        </details>
     </header>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Hi! I'm Emily. I'm passionate about AI, sustainability, and tech. Welcome to my personal homepage!</p>
+    <main>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Hi! I'm Emily, an AI/ML and data science specialist passionate about AI sustainability and energy
+                consumption.
+                I will be joining Microsoft as a Product Manager in the AI Development Acceleration Program (MAIDAP) in July
+                2025.
+                Currently, I am pursuing my Master's in Computer Science at <a href="https://tech.cornell.edu/"
+                    target="_blank">Cornell Tech</a>,
+                with a strong focus on AI applications and scalable machine learning systems.</p>
 
-        <!-- ✅ Interactive <details> Element -->
+            <p>I graduated <b>summa cum laude</b> from <a href="https://www.providence.edu/" target="_blank">Providence
+                    College</a> with
+                a B.S. in Computer Science and minors in Data Science, Mathematics, and Political Science. I also
+                participated in an exchange
+                program at <a href="https://disabroad.org/" target="_blank">DIS Copenhagen</a>, where I explored AI
+                sustainability from a European perspective.</p>
+
+            <p>My professional experience spans multiple industries and global locations. At <b>Millennium</b>, I worked as
+                a Quantitative Research Intern,
+                leveraging AI models for market trends. At <b>Procter & Gamble</b>, I was an IT Product Management Intern
+                leading digital transformations.
+                At <b>Louis Dreyfus Company</b>, I specialized in remote sensing and AI-powered commodities trading. My
+                international work in
+                <b>Geneva, Switzerland</b> and my study abroad in <b>Denmark</b> gave me a unique global perspective on AI
+                and sustainability.
+            </p>
+        </section>
+
+    <!-- ✅ Providence College & Honors Section -->
+    <section id="providence-college">
+        <h2>Providence College & Academic Honors</h2>
         <details>
-            <summary>Click to reveal a fun fact about me!</summary>
-            <p>I love running, traveling, and practicing film photography.</p>
+            <summary><b>Phi Beta Kappa</b></summary>
+            <p>Membership in Phi Beta Kappa is by invitation and requires excellence in liberal arts and sciences,
+                completion of at least 90 credit hours in these fields, intermediate-level proficiency in a second
+                language, and completion of a mathematics, logic, or statistics course.</p>
+            <p><a href="https://arts-sciences.providence.edu/phi-beta-kappa/" target="_blank">Learn more about my Phi
+                    Beta Kappa induction</a></p>
+        </details>
+        <details>
+            <summary><b>Sigma Xi</b></summary>
+            <p>Sigma Xi is an international honor society for science and engineering, recognizing excellence in
+                research. More than 200 Nobel Prize winners have been members.</p>
+        </details>
+        <details>
+            <summary><b>Pi Sigma Alpha</b></summary>
+            <p>Pi Sigma Alpha is the national political science honor society. Members must complete at least ten
+                semester-credits in political science, maintain a B average, and be in the top one-third of their class.
+            </p>
+        </details>
+        <details>
+            <summary><b>Upsilon Pi Epsilon</b></summary>
+            <p>The international honor society for computing and information disciplines, UPE membership requires
+                students to rank in the top 35% of their class, have a GPA of at least 3.0, and complete at least 45
+                semester hours of coursework in computing-related subjects.</p>
+        </details>
+        <details>
+            <summary><b>Summa Cum Laude</b></summary>
+            <p>Summa cum laude is the highest academic distinction at Providence College, awarded to students with a
+                cumulative GPA between 3.85 and 4.00.</p>
         </details>
     </section>
 
-    <!-- ✅ Fetch Random Cat Fact -->
-    <section id="cat-fact">
-        <h2>Random Cat Fact</h2>
-        <p id="fact">Loading...</p>
+    <!-- ✅ Cornell Courses Section -->
+    <section id="cornell-courses">
+        <h2>My Courses at Cornell</h2>
+        <h3>Fall 2024</h3>
+        <ul>
+            <li><b>HCI and Design (CS 5682)</b>: This course explores human-computer interaction (HCI) principles,
+                usability research, and prototyping. Students engage in hands-on projects such as survey design,
+                qualitative interviews, and accessibility evaluations.</li>
+            <li><b>Applied Machine Learning (CS 5785)</b>: Covers fundamental ML techniques, including regression,
+                classification, clustering, and deep learning. Students apply these methods in real-world scenarios
+                using Python and TensorFlow.</li>
+            <li><b>AI for Healthcare (INFO 5600)</b>: Examines AI applications in healthcare, such as medical imaging,
+                predictive analytics, and ethical considerations surrounding AI-driven patient care.</li>
+            <li><b>Applied Data & Decision Making (ORIE 5355)</b>: A deep dive into data-driven decision-making
+                techniques, causal inference, and experimental design.</li>
+            <li><b>Product Studio (TECH 5900)</b>: A hands-on, project-based course where students prototype and iterate
+                on real-world technology solutions.</li>
+        </ul>
+        <h3>Winter 2025</h3>
+        <ul>
+            <li><b>Emerging Technologies & Market (TECHIE 5315)</b>: Explores the latest trends in AI, blockchain, and
+                sustainability-focused technology and their impact on industries.</li>
+        </ul>
+        <h3>Spring 2025</h3>
+        <ul>
+            <li><b>Machine Learning Hardware and Systems (ECE 5545)</b>: Covers the optimization of ML models for
+                specialized hardware, including GPUs, TPUs, and embedded systems.</li>
+            <li><b>Building Startup Systems (CS 5356)</b>: Focuses on full-stack web development, API integration, and
+                scalable system design.</li>
+            <li><b>Special Topics in CS: AI - Data, Compute, Algorithms (CS 5996)</b>: Analyzes advancements in AI,
+                including data efficiency, algorithmic breakthroughs, and hardware acceleration.</li>
+            <li><b>Product Management (TECH 5200)</b>: Introduces key product management concepts, such as roadmap
+                development, A/B testing, and cross-functional team leadership.</li>
+            <li><b>Startup Studio (TECH 5910)</b>: A hands-on incubator course where students develop and pitch new
+                startup ideas.</li>
+        </ul>
     </section>
 
-    <!-- ✅ JavaScript Must Be Loaded at the End -->
-    <script src="script.js"></script>
+    <!-- ✅ Dog Gallery Section -->
+    <section id="gallery">
+        <h2>My Dogs 🐶</h2>
+        <img src="images/dog1.jpg" alt="My Dog 1">
+        <img src="images/dog2.jpg" alt="My Dog 2">
+    </section>
+
+    <!-- ✅ Projects Section -->
+    <section id="projects">
+        <h2>Check Out Some of My Projects</h2>
+        <ul>
+            <li><a href="https://engaged-learning.providence.edu/emily-gelchie-24/" target="_blank">My Feature on
+                    Engaged Learning at Providence College</a></li>
+            <li><a href="https://engaged-learning.providence.edu/autonomous-remote-erosion-monitoring-using-computer-vision/"
+                    target="_blank">Autonomous Remote Erosion Monitoring Using Computer Vision</a></li>
+            <li><a href="https://necyberteam.org/user/emily-gelchie" target="_blank">My Profile on NE Cyber Team</a>
+            </li>
+        </ul>
+    </section>
+
+    <!-- ✅ Blog Section -->
+    <section id="blog">
+        <h2>My Blog</h2>
+        <p>Check out my latest posts on Medium where I share insights on AI, sustainability, and technology.</p>
+        <a href="https://medium.com/@emily.gelchie" target="_blank">Visit My Blog</a>
+    </section>
+
+        <section id="carbon-fact">
+            <h2>Environmental Impact Insights</h2>
+            <p id="fact">Loading...</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Emily Gelchie</p>
+    </footer>
+
+    <script>
+        async function fetchCarbonFact() {
+            try {
+                const response = await fetch('https://api.api-ninjas.com/v1/environmental_facts', {
+                    headers: { 'X-Api-Key': 'YOUR_API_KEY' }
+                });
+                const data = await response.json();
+                document.getElementById('fact').innerText = data.fact;
+            } catch (error) {
+                document.getElementById('fact').innerText = "Failed to load environmental insight.";
+            }
+        }
+        fetchCarbonFact();
+    </script>
 </body>
 
 </html>
