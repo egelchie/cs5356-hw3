@@ -732,7 +732,7 @@ details p {
 }
 
 /* Cat Facts Section */
-#cat-facts {
+#cat-fact {
     background: linear-gradient(165deg, var(--section-bg), rgba(255, 192, 203, 0.1));
     text-align: center;
     padding: var(--content-spacing);
@@ -757,25 +757,6 @@ details p {
     font-size: 1.2rem;
     line-height: 1.6;
     margin: 0;
-}
-
-#new-fact-btn {
-    background-color: var(--deep-pink);
-    color: white;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 50px;
-    font-family: inherit;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-#new-fact-btn:hover {
-    background-color: var(--primary-pink);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* Dark mode adjustments */

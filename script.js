@@ -74,23 +74,19 @@ document.addEventListener("DOMContentLoaded", function () {
         newQuoteBtn.addEventListener("click", fetchQuote);
     }
 
-    // Cat Facts API
-    async function fetchCatFact() {
-        try {
-            const response = await fetch("https://catfact.ninja/fact");
-            const data = await response.json();
-            document.getElementById("fact").innerText = data.fact;
-        } catch (error) {
-            document.getElementById("fact").innerText = "Failed to load cat fact.";
-        }
-    }
-
-    // Fetch cat fact on page load
-    fetchCatFact();
-    
-    // Get new fact when button is clicked
-    const newFactBtn = document.getElementById("new-fact-btn");
-    if (newFactBtn) {
-        newFactBtn.addEventListener("click", fetchCatFact);
-    }
+    // Simple Cat Facts API implementation
+    fetch('https://catfact.ninja/fact')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            document.getElementById('fact').innerText = data.fact;
+        })
+        .catch(error => {
+            console.error('Error fetching cat fact:', error);
+            document.getElementById('fact').innerText = "Failed to load fact. Try again later.";
+        });
 });
