@@ -37,6 +37,35 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    // Debug: Check if element exists
+    const factElement = document.getElementById('fact');
+    console.log('Fact element:', factElement);
+
+    // Simple Cat Facts API implementation with debugging
+    console.log('Starting cat fact fetch...');
+    fetch('https://catfact.ninja/fact')
+        .then(response => {
+            console.log('API Response:', response);
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Cat fact data:', data);
+            if (factElement) {
+                factElement.innerText = data.fact;
+            } else {
+                console.error('Fact element not found in DOM');
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching cat fact:', error);
+            if (factElement) {
+                factElement.innerText = "Failed to load fact. Try again later.";
+            }
+        });
+
     // Quotable API - Random Quotes
     async function fetchQuote() {
         const quoteText = document.getElementById("quote-text");
@@ -73,20 +102,4 @@ document.addEventListener("DOMContentLoaded", function () {
     if (newQuoteBtn) {
         newQuoteBtn.addEventListener("click", fetchQuote);
     }
-
-    // Simple Cat Facts API implementation
-    fetch('https://catfact.ninja/fact')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            document.getElementById('fact').innerText = data.fact;
-        })
-        .catch(error => {
-            console.error('Error fetching cat fact:', error);
-            document.getElementById('fact').innerText = "Failed to load fact. Try again later.";
-        });
 });
