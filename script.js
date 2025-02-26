@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("dark-mode", themeToggle.checked);
     });
 
-    // Cat Facts API
+    // Cat Facts API - FIXED VERSION
     async function fetchCatFact() {
         const factElement = document.getElementById("fact");
         factElement.innerText = "Loading...";
