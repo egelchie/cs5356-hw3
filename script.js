@@ -37,53 +37,16 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Debug: Check if element exists
-    const factElement = document.getElementById('fact');
-    console.log('Fact element:', factElement);
-
-    // Simple Cat Facts API implementation with debugging
-    console.log('Starting cat fact fetch...');
-    
-    // Function to fetch cat fact
-    async function fetchCatFact() {
-        const factElement = document.getElementById('fact');
-        
-        if (!factElement) {
-            console.error('Cat fact element not found in DOM');
-            return;
-        }
-        
-        factElement.innerText = "Loading cat fact...";
-        
-        try {
-            const response = await fetch('https://catfact.ninja/fact');
-            
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            
-            const data = await response.json();
-            console.log('Cat fact data:', data);
-            
-            if (data && data.fact) {
-                factElement.innerText = data.fact;
-            } else {
-                throw new Error('Invalid data received from cat API');
-            }
-        } catch (error) {
-            console.error('Error fetching cat fact:', error);
-            factElement.innerText = "Failed to load cat fact. Try again later.";
-        }
-    }
-    
-    // Fetch cat fact on page load
-    fetchCatFact();
-    
-    // Add a refresh button for cat facts if it exists
-    const catFactRefreshBtn = document.getElementById('cat-fact-refresh');
-    if (catFactRefreshBtn) {
-        catFactRefreshBtn.addEventListener('click', fetchCatFact);
-    }
+    // Cat Facts API
+    fetch('https://catfact.ninja/fact')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('fact').innerText = data.fact;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('fact').innerText = "Failed to load fact. Try again later.";
+        });
 
     // Quotable API - Random Quotes
     async function fetchQuote() {
