@@ -13,17 +13,28 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("dark-mode", themeToggle.checked);
     });
 
-    // Fetch Random Cat Fact
+    // Cat Facts API
     async function fetchCatFact() {
+        const factElement = document.getElementById("fact");
+        factElement.innerText = "Loading...";
+        
         try {
             const response = await fetch("https://catfact.ninja/fact");
+            if (!response.ok) throw new Error('Failed to fetch cat fact');
+            
             const data = await response.json();
-            document.getElementById("fact").innerText = data.fact;
+            if (data && data.fact) {
+                factElement.innerText = data.fact;
+            } else {
+                throw new Error('No fact received');
+            }
         } catch (error) {
-            document.getElementById("fact").innerText = "Failed to load cat fact.";
+            console.error('Error:', error);
+            factElement.innerText = "Did you know? Cats spend 70% of their lives sleeping!";
         }
     }
 
+    // Call fetchCatFact when page loads
     fetchCatFact();
 
     // Extra Credit: Mouse Event Interactivity
@@ -47,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
             
-            const rotateX = ((y - centerY) / 10) * -1; // Inverted for natural feel
+            const rotateX = ((y - centerY) / 10) * -1;
             const rotateY = (x - centerX) / 10;
             
             pic.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
