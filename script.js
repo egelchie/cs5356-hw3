@@ -37,52 +37,40 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Bored API - Random Activity Suggestions
-    async function fetchActivity() {
-        const activityText = document.getElementById("activity-text");
-        const activityType = document.getElementById("activity-type");
-        const activityParticipants = document.getElementById("activity-participants");
-        const activityPrice = document.getElementById("activity-price");
+    // Quotable API - Random Quotes
+    async function fetchQuote() {
+        const quoteText = document.getElementById("quote-text");
+        const quoteAuthor = document.getElementById("quote-author");
         
-        activityText.innerText = "Finding something fun to do...";
+        quoteText.innerText = "Loading...";
+        quoteAuthor.innerText = "—";
         
         try {
-            const response = await fetch("https://www.boredapi.com/api/activity");
+            const response = await fetch("https://api.quotable.io/random");
             
             if (!response.ok) {
-                throw new Error("Couldn't fetch an activity");
+                throw new Error("Couldn't fetch a quote");
             }
             
             const data = await response.json();
             
-            // Display the activity data
-            activityText.innerText = data.activity;
-            activityType.innerText = `Type: ${data.type.charAt(0).toUpperCase() + data.type.slice(1)}`;
-            activityParticipants.innerText = `Participants: ${data.participants}`;
-            
-            // Convert price to stars (0-4)
-            const priceStars = data.price === 0 ? "Free" : 
-                              data.price < 0.3 ? "$" : 
-                              data.price < 0.6 ? "$$" : 
-                              data.price < 0.9 ? "$$$" : "$$$$";
-            
-            activityPrice.innerText = `Price: ${priceStars}`;
+            // Display the quote
+            quoteText.innerText = `"${data.content}"`;
+            quoteAuthor.innerText = `— ${data.author}`;
             
         } catch (error) {
-            console.error("Error fetching activity:", error);
-            activityText.innerText = "Try learning a new skill or calling an old friend!";
-            activityType.innerText = "Type: Suggestion";
-            activityParticipants.innerText = "Participants: 1+";
-            activityPrice.innerText = "Price: Varies";
+            console.error("Error fetching quote:", error);
+            quoteText.innerText = ""The future belongs to those who believe in the beauty of their dreams."";
+            quoteAuthor.innerText = "— Eleanor Roosevelt";
         }
     }
     
-    // Fetch activity on page load
-    fetchActivity();
+    // Fetch quote on page load
+    fetchQuote();
     
-    // Get new activity when button is clicked
-    const newActivityBtn = document.getElementById("new-activity-btn");
-    if (newActivityBtn) {
-        newActivityBtn.addEventListener("click", fetchActivity);
+    // Get new quote when button is clicked
+    const newQuoteBtn = document.getElementById("new-quote-btn");
+    if (newQuoteBtn) {
+        newQuoteBtn.addEventListener("click", fetchQuote);
     }
 });
