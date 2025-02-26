@@ -13,25 +13,60 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("dark-mode", themeToggle.checked);
     });
 
-    // Cat Facts API - FIXED VERSION
+    // Improved Cat Facts API with fallback and retries
     async function fetchCatFact() {
         const factElement = document.getElementById("fact");
-        factElement.innerText = "Loading...";
+        factElement.innerText = "Loading cat fact...";
+        
+        // Array of cat facts to use as fallback
+        const fallbackFacts = [
+            "Cats spend 70% of their lives sleeping.",
+            "A group of cats is called a 'clowder'.",
+            "Cats can make over 100 vocal sounds while dogs can only make about 10.",
+            "A cat's purr vibrates at a frequency of 25 to 150 hertz, which can promote healing.",
+            "Cats have five toes on their front paws but only four on their back paws.",
+            "A cat can jump 5 times its height in a single bound.",
+            "A cat's nose print is unique, like a human's fingerprint."
+        ];
         
         try {
-            const response = await fetch("https://catfact.ninja/fact");
-            if (!response.ok) throw new Error('Failed to fetch cat fact');
+            // Try the main cat fact API
+            const response = await Promise.race([
+                fetch("https://catfact.ninja/fact"),
+                new Promise((_, reject) => setTimeout(() => reject(new Error("Timeout")), 5000))
+            ]);
             
             const data = await response.json();
+            
             if (data && data.fact) {
                 factElement.innerText = data.fact;
-            } else {
-                throw new Error('No fact received');
+                return;
             }
         } catch (error) {
-            console.error('Error:', error);
-            factElement.innerText = "Did you know? Cats spend 70% of their lives sleeping!";
+            console.error('Primary API error:', error);
+            
+            try {
+                // Try alternate cat API
+                const backupResponse = await Promise.race([
+                    fetch("https://meowfacts.herokuapp.com/"),
+                    new Promise((_, reject) => setTimeout(() => reject(new Error("Timeout")), 5000))
+                ]);
+                
+                const backupData = await backupResponse.json();
+                
+                if (backupData && backupData.data && backupData.data[0]) {
+                    factElement.innerText = backupData.data[0];
+                    return;
+                }
+            } catch (backupError) {
+                console.error('Backup API error:', backupError);
+                // Continue to fallback
+            }
         }
+        
+        // Use fallback if both APIs fail
+        const randomFact = fallbackFacts[Math.floor(Math.random() * fallbackFacts.length)];
+        factElement.innerText = randomFact;
     }
 
     // Call fetchCatFact when page loads
