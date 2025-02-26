@@ -774,3 +774,23 @@ details p {
         padding: 1.5rem;
     }
 }
+
+/* Add styling for the cat fact button */
+#cat-fact-refresh {
+    padding: 8px 16px;
+    background-color: var(--deep-pink);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#cat-fact-refresh:hover {
+    background-color: #ff4d67;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
