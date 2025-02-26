@@ -22,12 +22,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // ✅ API Integration
     async function fetchEnvironmentalFact() {
+        const factElement = document.getElementById('fact');
+        factElement.innerText = "Loading...";
         try {
             const response = await fetch('https://api.api-ninjas.com/v1/environmental_facts');
+            if (!response.ok) throw new Error('API request failed');
             const data = await response.json();
-            document.getElementById('fact').innerText = data.fact;
+            factElement.innerText = data.fact;
         } catch (error) {
-            document.getElementById('fact').innerText = "Failed to load environmental fact.";
+            factElement.innerText = "Failed to load environmental fact. Please try again later.";
+            console.error('Error:', error);
         }
     }
     
@@ -43,3 +47,18 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initialize
     fetchEnvironmentalFact();
 });
+
+function showToast(message, type = 'info') {
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.classList.add('show');
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 300);
+        }, 3000);
+    }, 100);
+}

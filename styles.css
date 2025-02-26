@@ -62,7 +62,7 @@ section:hover {
 }
 
 /* ✅ Profile Image - Fix Rotation + Safari Issues */
-img {
+#profile-pic {
     display: block;
     max-width: min(150px, 30vw);
     width: 100%;
@@ -76,9 +76,37 @@ img {
     will-change: transform;
 }
 
-/* ✅ Rotate on Hover */
-img:hover {
+/* Rainbow glow animation */
+@keyframes rainbow-glow {
+    0% {
+        box-shadow: 0 0 15px 5px rgba(255, 0, 0, 0.7);
+    }
+    20% {
+        box-shadow: 0 0 15px 5px rgba(255, 165, 0, 0.7);
+    }
+    40% {
+        box-shadow: 0 0 15px 5px rgba(255, 255, 0, 0.7);
+    }
+    60% {
+        box-shadow: 0 0 15px 5px rgba(0, 255, 0, 0.7);
+    }
+    80% {
+        box-shadow: 0 0 15px 5px rgba(0, 0, 255, 0.7);
+    }
+    100% {
+        box-shadow: 0 0 15px 5px rgba(238, 130, 238, 0.7);
+    }
+}
+
+/* Apply rainbow glow during spin */
+#profile-pic:hover {
     transform: rotate(360deg);
+    animation: rainbow-glow 2s linear infinite;
+}
+
+/* Ensure the glow effect works in dark mode */
+.dark-mode #profile-pic {
+    border-color: var(--section-bg);
 }
 
 /* ✅ Dark Mode Toggle - Proper Slider */
@@ -371,4 +399,24 @@ footer {
     margin-top: var(--section-spacing);
     padding: var(--content-spacing);
     text-align: center;
+}
+
+/* Add loading skeleton animation */
+@keyframes shimmer {
+    0% { background-position: -468px 0 }
+    100% { background-position: 468px 0 }
+}
+
+.skeleton {
+    background: #f6f7f8;
+    background: linear-gradient(to right, #f6f7f8 8%, #edeef1 18%, #f6f7f8 33%);
+    background-size: 800px 104px;
+    animation: shimmer 1.5s linear infinite;
+    border-radius: var(--border-radius);
+    min-height: 100px;
+}
+
+.dark-mode .skeleton {
+    background: #2a2a2a;
+    background: linear-gradient(to right, #2a2a2a 8%, #3a3a3a 18%, #2a2a2a 33%);
 }
