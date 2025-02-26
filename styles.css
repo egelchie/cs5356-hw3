@@ -1,4 +1,4 @@
-/* 🌟 Light Mode (Default) */
+/* Light Mode (Default) */
 :root {
     --bg-color: #f9f9f9;
     --text-color: #333;
@@ -13,7 +13,7 @@
     --border-radius: clamp(12px, 2vw, 24px);
 }
 
-/* 🌙 Dark Mode */
+/* Dark Mode */
 .dark-mode {
     --bg-color: #1e1e1e;
     --text-color: white;
@@ -22,7 +22,7 @@
     --button-hover: #777;
 }
 
-/* ✅ Apply Theme Colors */
+/* Apply Theme Colors */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -34,10 +34,10 @@ body {
     min-height: 100vh;
 }
 
-/* ✅ Section Styling */
+/* Section Styling */
 section {
     position: relative;
-    margin: 0;  /* Remove default margins */
+    margin: 0;
     padding: var(--content-spacing);
     border-radius: var(--border-radius);
     background: var(--section-bg);
@@ -61,7 +61,7 @@ section:hover {
     box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12);
 }
 
-/* ✅ Profile Image - Fix Rotation + Safari Issues */
+/* Profile Image - Fix Rotation + Safari Issues */
 #profile-pic {
     display: block;
     max-width: min(150px, 30vw);
@@ -109,7 +109,7 @@ section:hover {
     border-color: var(--section-bg);
 }
 
-/* ✅ Dark Mode Toggle - Proper Slider */
+/* Dark Mode Toggle - Proper Slider */
 .switch {
     position: relative;
     display: inline-block;
@@ -139,7 +139,7 @@ section:hover {
     padding: 4px;
 }
 
-/* ✅ The Circle Toggle Button */
+/* The Circle Toggle Button */
 .slider::before {
     content: "";
     position: absolute;
@@ -307,14 +307,14 @@ details summary {
     min-width: 44px;
 }
 
-/* ✅ CSS Property not discussed in class: Custom Property Animation */
+/* CSS Property not discussed in class: Custom Property Animation */
 @property --gradient-angle {
     syntax: '<angle>';
     initial-value: 0deg;
     inherits: false;
 }
 
-/* ✅ CSS Grid Implementation */
+/* CSS Grid Implementation */
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -322,7 +322,7 @@ details summary {
     padding: var(--padding-inline);
 }
 
-/* ✅ Flexbox Implementation */
+/* Flexbox Implementation */
 header {
     display: flex;
     flex-direction: column;
@@ -331,7 +331,7 @@ header {
     padding: var(--padding-inline);
 }
 
-/* ✅ Extra Credit: Mouse Event Interactivity */
+/* Extra Credit: Mouse Event Interactivity */
 .interactive-element {
     transition: transform 0.3s ease;
 }
@@ -339,7 +339,7 @@ header {
     transform: scale(1.1);
 }
 
-/* ✅ Responsive Design Media Queries */
+/* Responsive Design Media Queries */
 @media (max-width: 768px) {
     section:nth-child(odd),
     section:nth-child(even) {
@@ -357,14 +357,6 @@ header {
     #gallery img {
         height: 250px;
     }
-}
-
-/* ✅ Ensure minimum touch target sizes for mobile */
-button, 
-.switch,
-details summary {
-    min-height: 44px;
-    min-width: 44px;
 }
 
 /* Different section styles */
@@ -419,4 +411,87 @@ footer {
 .dark-mode .skeleton {
     background: #2a2a2a;
     background: linear-gradient(to right, #2a2a2a 8%, #3a3a3a 18%, #2a2a2a 33%);
+}
+
+/* Base container width control */
+.content-container {
+    width: 100%;
+    max-width: 1512px;  /* Maximum test width */
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Ensure all content fits viewport */
+* {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Responsive images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Text readability */
+p, li {
+    max-width: 65ch;  /* Optimal reading width */
+    word-wrap: break-word;
+}
+
+/* Gallery grid layout */
+#gallery {
+    padding: var(--content-spacing);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    background: linear-gradient(165deg, var(--section-bg), rgba(255, 154, 158, 0.03));
+}
+
+#gallery img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    transition: transform 0.3s ease;
+}
+
+/* Mobile optimization */
+@media screen and (max-width: 375px) {
+    #gallery {
+        grid-template-columns: 1fr;  /* Single column for smallest screens */
+        gap: 1rem;
+    }
+    
+    .content-container {
+        padding: 0 0.5rem;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    h2 {
+        font-size: 1.25rem;
+    }
+}
+
+/* Responsive typography */
+h1 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: var(--deep-pink);
+    margin-bottom: var(--content-spacing);
+    padding-bottom: 1rem;
+    line-height: 1.2;
+}
+
+p, li {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    line-height: 1.6;
 }
