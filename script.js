@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
         e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     });
 
-    // Add 3D tilt effect to dog pictures
+    // 3D tilt effect for dog pictures
     const dogPics = document.querySelectorAll("#gallery img");
     
     dogPics.forEach(pic => {
@@ -47,16 +47,15 @@ document.addEventListener("DOMContentLoaded", function () {
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
             
-            const rotateX = (y - centerY) / 10;
-            const rotateY = (centerX - x) / 10;
+            const rotateX = ((y - centerY) / 10) * -1; // Inverted for natural feel
+            const rotateY = (x - centerX) / 10;
             
             pic.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-            pic.style.transition = "transform 0.1s";
         });
         
         pic.addEventListener("mouseleave", () => {
             pic.style.transform = "perspective(1000px) rotateX(0) rotateY(0)";
-            pic.style.transition = "transform 0.5s";
+            pic.style.transition = "transform 0.5s ease";
         });
     });
 });
